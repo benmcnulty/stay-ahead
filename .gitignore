@@ -1,15 +1,82 @@
-# Node modules
+# Dependencies
 node_modules/
-# Logs
 npm-debug.log*
-# Testing
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime and build outputs
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+
+# Testing artifacts
 coverage/
-# Env
-.env
-# VS Code
-.vscode/
-# Build artifacts
-/dist
-# Generated docs
-/docs
 test-results/
+playwright-report/
+*.lcov
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and editor files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Generated documentation
+docs/
+*.tsbuildinfo
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Logs
+*.log
+logs/
+
+# Agent context files (if using external context storage)
+.agent-context/
+agent-state.json
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variable files
+.env.development
+.env.test
+.env.production

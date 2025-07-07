@@ -10,5 +10,19 @@
     "ecmaVersion": 2022,
     "sourceType": "module"
   },
-  "rules": {}
+  "rules": {
+    "no-unused-vars": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-arrow-callback": "error",
+    "no-console": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.{js,ts}", "tests/**/*"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
 }
