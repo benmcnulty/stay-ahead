@@ -114,6 +114,3 @@ afterEach(() => {
   }
 });
 
-console.log(
-  '🚀 Test environment initialized with agent collaboration utilities'
-);
