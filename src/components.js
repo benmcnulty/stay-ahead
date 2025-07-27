@@ -234,7 +234,7 @@ class ListComponent extends BaseComponent {
         </div>
       </div>
     `;
-    this.bindEvents();
+    // Event binding moved to init() to prevent re-binding on every render.
   }
 
   bindEvents() {
