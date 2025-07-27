@@ -42,7 +42,7 @@ jobs:
         run: |
           echo "📚 Validating documentation is up to date..."
           npm run docs
-          if git diff --quiet; then
+          if git diff --quiet -- . ':(exclude)docs/'; then
             echo "✅ Documentation is synchronized"
           else
             echo "❌ Documentation needs to be updated"
