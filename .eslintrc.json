@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unused-vars": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "prefer-arrow-callback": "error",
+    "no-console": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.{js,ts}", "tests/**/*"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

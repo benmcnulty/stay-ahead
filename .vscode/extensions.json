@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "orta.vscode-jest",
+    "ms-playwright.playwright",
+    "github.copilot",
+    "github.copilot-chat",
+    "ms-vscode.vscode-json",
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "ms-vscode.vscode-npmi",
+    "christian-kohler.npm-intellisense",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
+    "ms-vscode.vscode-todo-highlight",
+    "gruntfuggly.todo-tree"
+  ],
+  "unwantedRecommendations": ["ms-vscode.vscode-typescript"]
+}
