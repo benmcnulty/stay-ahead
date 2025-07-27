@@ -211,12 +211,13 @@ describe('CacheService', () => {
   });
 
   test('allows custom TTL per entry', () => {
+    jest.useFakeTimers();
     cache.set('short', 'value', 50);
     cache.set('long', 'value', 1000);
 
-    setTimeout(() => {
-      expect(cache.get('short')).toBeNull();
-      expect(cache.get('long')).toBe('value');
-    }, 100);
+    jest.advanceTimersByTime(100);
+    expect(cache.get('short')).toBeNull();
+    expect(cache.get('long')).toBe('value');
+    jest.useRealTimers();
   });
 });
