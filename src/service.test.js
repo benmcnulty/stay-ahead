@@ -189,25 +189,25 @@ describe('CacheService', () => {
     expect(cache.get('nonexistent')).toBeNull();
   });
 
-  test('expires values after TTL', done => {
+  test('expires values after TTL', () => {
+    jest.useFakeTimers();
     cache.set('key1', 'value1', 100); // 100ms TTL
 
-    setTimeout(() => {
-      expect(cache.get('key1')).toBeNull();
-      done();
-    }, 150);
+    jest.advanceTimersByTime(150);
+    expect(cache.get('key1')).toBeNull();
+    jest.useRealTimers();
   });
 
-  test('cleans up expired entries', done => {
+  test('cleans up expired entries', () => {
+    jest.useFakeTimers();
     cache.set('key1', 'value1', 100);
     cache.set('key2', 'value2', 1000);
 
-    setTimeout(() => {
-      cache.cleanup();
-      expect(cache.cache.has('key1')).toBe(false);
-      expect(cache.cache.has('key2')).toBe(true);
-      done();
-    }, 150);
+    jest.advanceTimersByTime(150);
+    cache.cleanup();
+    expect(cache.cache.has('key1')).toBe(false);
+    expect(cache.cache.has('key2')).toBe(true);
+    jest.useRealTimers();
   });
 
   test('allows custom TTL per entry', () => {
