@@ -32,4 +32,4 @@ Claude is responsible for high level planning and providing context for features
 - `npm run format` - Format code
 - `npm run docs` - Generate documentation
 
-The browser suite currently needs a base URL/server setup; see README.md before reporting it as reproducible or passing.
+The browser suite now starts the loopback static preview with a base URL and one worker. Run the declared checks and report exact output; these tests do not establish real multi-agent outcomes or product/accessibility certification.

@@ -15,22 +15,44 @@ The page in [`src/index.html`](src/index.html) is a minimal smoke-test surface.
 Agent roles below describe the intended process, not independently verified
 multi-agent productivity results.
 
-The manifest requires Node >=18; the committed CI uses Node 20. Prefer the
-lockfile with `npm ci` for an install attempt. Installation runs the existing
-Husky preparation hook. No provider environment variables are required by these
-examples. Do not run `npm run dev` expecting a website server: it watches the
-utility module, whose CommonJS export also conflicts with the package's ESM mode.
+The manifest requires Node >=18; the committed CI uses Node 20. The 2026-10-02
+candidate was checked locally on Node 24 with its locked Playwright 1.53.2 /
+Chromium 138.0.7204.23 build 1179. Install the lockfile with lifecycle hooks disabled
+for a review checkout:
 
-The current Playwright configuration has no `baseURL` or `webServer`, while its
-test navigates to `/index.html`. `npm run e2e` therefore is not a complete
-reproducible browser setup as committed. `npm run build` is an aggregate
-lint/type/unit/browser gate, not a distributable application build. These issues
-are disclosed rather than treated as passing validation. This docs review did
-not execute the full suite or update dependencies.
+```sh
+npm ci --ignore-scripts --no-audit --no-fund
+npx playwright install chromium --only-shell
+npm run dev
+```
 
-For a static preview only, use Python 3:
-`python -m http.server 8000 --bind 127.0.0.1 --directory src`, open
-`http://127.0.0.1:8000` and stop with Ctrl+C. This does not repair the browser suite.
+Open `http://127.0.0.1:4173`; Ctrl+C stops the loopback static preview.
+`scripts/serve.js` serves only the demonstration page and declared assets. `PORT`
+can override the development preview port. Playwright starts its own preview on
+4173, supplies `baseURL`, uses one worker and closes that server after testing.
+The utility module retains guarded CommonJS exports for Jest and loads without
+throwing in the browser/native ESM context. No model/provider variables are needed.
+
+```sh
+npm run lint
+npm run typecheck
+npm run format:check
+npm test -- --runInBand
+npm run test:coverage -- --runInBand
+npm run docs
+npm run e2e
+```
+
+The candidate passed all these checks locally: 38 unit tests and 2 real-browser /
+preview checks. Coverage 86.27% statements, 84.37% branches, 85.31% lines and 82%
+functions meets the unchanged configured gates. The browser test also asserts
+no runtime page errors and verifies allowed assets, 404 for repository files and
+405 for POST. Linux CI uses its existing browser/dependency installation step.
+
+`npm run build` is an aggregate lint/type/unit/browser gate, not a distributable
+application build. Full product/accessibility or multi-agent outcome validation
+is not established by this small template's tests. The supported artifact action
+in CI packages generated documentation/test artifacts without deploying a site.
 
 ## Architecture
 
@@ -45,9 +67,9 @@ The repo structure supports regression coverage, TDD, and CI guardrails. Documen
 Install dependencies and Playwright browsers:
 
 ```bash
-npm install
-npx playwright install
-npx playwright install-deps  # Linux only
+npm ci --ignore-scripts --no-audit --no-fund
+npx playwright install chromium --only-shell
+# Linux may also need Playwright browser dependencies.
 ```
 
 Useful commands:
@@ -72,4 +94,4 @@ Read [AGENTS.md](AGENTS.md), keep examples and documentation aligned, and includ
 actual gate output with changes. The existing CI performs checks, documentation
 generation and artifact/coverage uploads; its Dependabot merge job is restricted
 to Dependabot's actor and was not requested for this documentation branch.
-See [LICENSE](LICENSE) for MIT terms. No fresh CI success or deployment is claimed.
+See [LICENSE](LICENSE) for MIT terms. Consult exact candidate CI; no deployment is performed or claimed.

@@ -113,4 +113,3 @@ afterEach(() => {
     document.body.innerHTML = '';
   }
 });
-
