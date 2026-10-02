@@ -27,7 +27,9 @@ Claude is responsible for high level planning and providing context for features
 ## Command Reference
 
 - `npm test` - Run unit tests
-- `npm run playwright` - Run e2e tests
+- `npm run e2e` - Run e2e tests
 - `npm run lint` - Check code quality
 - `npm run format` - Format code
 - `npm run docs` - Generate documentation
+
+The browser suite currently needs a base URL/server setup; see README.md before reporting it as reproducible or passing.
