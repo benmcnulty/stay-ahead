@@ -47,7 +47,8 @@ The candidate passed all these checks locally: 38 unit tests and 2 real-browser 
 preview checks. Coverage 86.27% statements, 84.37% branches, 85.31% lines and 82%
 functions meets the unchanged configured gates. The browser test also asserts
 no runtime page errors and verifies allowed assets, 404 for repository files and
-405 for POST. Linux CI uses its existing browser/dependency installation step.
+405 for POST. Both the Linux e2e job and the separate aggregate-build runner
+install their required Playwright browser and operating-system dependencies.
 
 `npm run build` is an aggregate lint/type/unit/browser gate, not a distributable
 application build. Full product/accessibility or multi-agent outcome validation
