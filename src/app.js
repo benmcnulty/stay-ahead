@@ -83,9 +83,12 @@ async function retryWithBackoff(fn, maxRetries = 3) {
   }
 }
 
-module.exports = {
-  add,
-  processItems,
-  validateInput,
-  retryWithBackoff,
-};
+// Keep legacy Jest/CommonJS exports without throwing in the browser or ESM.
+if (typeof module !== 'undefined') {
+  module.exports = {
+    add,
+    processItems,
+    validateInput,
+    retryWithBackoff,
+  };
+}
